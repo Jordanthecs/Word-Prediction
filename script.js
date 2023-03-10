@@ -1,23 +1,21 @@
 let arr = ['the','those','these'];
 let mOutput = document.querySelector('.messageOutput');
+let mInput = document.querySelector('.message');
 let word = [];
-let temp = [];
-let i = 0;
+let temp = arr;
+let j = 0,i = 0;
 
 document.onkeydown = function textPrediction(e){
     if(e.key){ 
         if(e.key === 'Backspace' || e.key === 'Shift'){
             word.pop();
-        }else{
+            console.log(word);  
+            mOutput.value = word.join('');
+        }else /*if(word === temp[i].split(word[i]))*/{
             word.push(e.key);
-        }               
-        while(i < arr.length && arr[i].splice(arr[i].length)){
-            temp = arr;
-            if(word === temp[i]){
-                temp.slice(i);
-                mOutput.value = arr[i];
-            }
-            i++;
+            console.log(temp);
+            console.log(temp[i].split(i));
+            mOutput.value = temp.join('');
         }
     }
 }
