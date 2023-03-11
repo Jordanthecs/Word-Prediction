@@ -8,8 +8,12 @@ let j = 0,i = 0;
 document.onkeydown = function textPrediction(e){
     if(e.key !== 'Backspace'){ 
         word.push(e.key);
-        console.log(temp[i].split(i));
-        mOutput.value = temp[i].split(i);
+        console.log(word);
+        console.log(temp[i].split(i,0));
+        while(word === temp[i].split(i)){
+            mOutput.value = arr[i];
+            
+        }
     }
     else{
         word.pop();  
