@@ -3,22 +3,25 @@ let mOutput = document.querySelector('.messageOutput');
 let mInput = document.querySelector('.message');
 let word = [];
 let temp = arr;
-let j = 0,i = 0;
+let i = 0; let j = 1;
 
 document.onkeydown = function textPrediction(e){
     if(e.key !== 'Backspace'){ 
         word.push(e.key);
         console.log(word);
-        console.log(temp[i].split(i,0));
-        while(word === temp[i].split(i)){
-            mOutput.value = arr[i];
-            
+        if(i > arr.length){
+            i = 0;
+        }
+        while(word.join("") !== temp[i].substring(0,word.length) && i < arr.length){
+            i++;
+        }
+        console.log(temp[i].substring(0,word.length));
+        mOutput.value = arr[i];
+    }else{
+        word.pop();
+        if(mInput.value.length === 1 || e.key === 'Space'){
+            mOutput.value = '';
+            i = 0;
         }
     }
-    else{
-        word.pop();  
-        mOutput.value = word.join('');
-    }
 }
-
- 
