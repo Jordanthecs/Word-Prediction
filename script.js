@@ -1,4 +1,4 @@
-let arr = ['the','those','these'];
+let arr = ['the','those','these','ice'];
 let mOutput = document.querySelector('.messageOutput');
 let mInput = document.querySelector('.message');
 let word = [];
