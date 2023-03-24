@@ -19,6 +19,10 @@ document.onkeydown = function textPrediction(e){
         mOutput.value = arr[i];
     }else{
         word.pop();
+        i = 0;
+        while(word.join("") !== temp[i].substring(0,word.length) && i < arr.length){
+            i++;
+        }
         if(mInput.value.length === 1 || e.key === 'Space'){
             mOutput.value = '';
             i = 0;
