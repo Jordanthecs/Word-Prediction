@@ -1,22 +1,4 @@
-let arr;
-
-function readTextFile(file){
-    let rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function (){
-        if(rawFile.readyState === 4){
-            if(rawFile.status === 200 || rawFile.status == 0){
-                let data = rawFile.responseText;
-                arr = data.split("\n");
-                console.log(arr);
-            }
-        }
-    }
-    rawFile.send(null);
-}
-
-readTextFile("words.txt");
-
+let arr = ["the","of","and","a","ant","apple","add","to","in","is","you","your","that","it","he","was","for","on","are","as","with","his","they","I","at","be","this","have","from","or","one","had","by","word","but","not","what","all","were","we","when","your","can","said","there","use","an","each","which","she","do","how","their","if","will","up","other","about","out","many","then","them","these","so","some","her","would","make","like","him","into","time","has","look","two","more","write","go","see","number","no","way","could","people","my","than","first","water","been","call","who","oil","its","now","find","long","down","day","did","get","come","made","may","part"];
 let mOutput = document.querySelector('.messageOutput');
 let mInput = document.querySelector('.message');
 let word = [];
