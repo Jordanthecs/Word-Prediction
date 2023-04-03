@@ -23,16 +23,29 @@ let i = 0; let j = 1;
 
 document.onkeydown = function textPrediction(e){
     if(e.key !== 'Backspace'){ 
-        if(e.key === ' '){
-            word = [];
-            mOutput.value = ''
+        if(e.key === ' ' || e.key === 'Tab'){
+            if(e.key === 'Tab'){
+                e.preventDefault();
+            }
+            if(word !== mOutput.value){
+                mInput.value = mInput.value.split(' ').slice(0,-1).join(' ') + ' ' + mOutput.value;
+                word = [];
+                mOutput.value = '';
+                if(e.key === 'Tab'){
+                    mInput.value = mInput.value + ' ';
+                }
+            }else if(word === mOutput.value){
+                word = [];
+                mOutput.value = '';
+            }
         }else{
+        temp = arr;
         word.push(e.key);
         console.log(word);
-        if(i > arr.length){
+        if(i !== 0){
             i = 0;
         }
-        while(word.join("") !== temp[i].substring(0,word.length) && i < arr.length){
+        while(word.join('') !== temp[i].substring(0,word.length) && i < arr.length){
             i++;
         }
         console.log(temp[i].substring(0,word.length));
