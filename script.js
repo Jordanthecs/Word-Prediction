@@ -1,4 +1,5 @@
 let arr;
+// add the word prediction
 
 function readTextFile(file){
     let rawFile = new XMLHttpRequest();
