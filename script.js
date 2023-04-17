@@ -1,4 +1,5 @@
 let arr;
+let wordString;
 // add the word prediction
 
 function readTextFile(file){
