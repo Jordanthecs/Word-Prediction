@@ -1,6 +1,7 @@
 let arr;
 let wordString;
 // add the word prediction
+//will add more
 
 function readTextFile(file){
     let rawFile = new XMLHttpRequest();
