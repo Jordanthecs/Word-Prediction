@@ -1,8 +1,6 @@
 let arr;
 let wordString;
 let sentences = [];
-// add the word prediction
-//will add more
 
 function readTextFile(file){
     let rawFile = new XMLHttpRequest();
@@ -36,20 +34,17 @@ function readSenTextFile(file){
 
 readSenTextFile("sentences.txt");
 
-// Create a Markov chain object
 class MarkovChain {
     constructor() {
       this.chain = {};
     }
   
-    // Add a new word to the chain
     addWord(word) {
       if (!this.chain[word]) {
         this.chain[word] = {};
       }
     }
   
-    // Add a new transition between two words
     addTransition(word, nextWord) {
       if (!this.chain[word]) {
         this.addWord(word);
@@ -60,7 +55,6 @@ class MarkovChain {
       this.chain[word][nextWord]++;
     }
   
-    // Get the next word based on the current word
     getNextWord(word) {
       let words = Object.keys(this.chain[word]);
       let count = words.map((w) => this.chain[word][w]).reduce((a, b) => a + b);
@@ -74,19 +68,17 @@ class MarkovChain {
     }
 }
   
-  // Initialize the Markov chain object
   let chain = new MarkovChain();
   
-  // Add some sample data to the chain
-let wordPred = sentences[1].split(" ");
+let wordPred = sentences.toString().split(" ");
 for (let i = 0; i < wordPred.length - 1; i++) {
   chain.addTransition(wordPred[i], wordPred[i + 1]);
 }
-  
-  // Predict the next word based on the current word
+
 const printNextWord = (currentWord) => {
    let nextWord = chain.getNextWord(currentWord);
    mOutput.value = nextWord;
+   return nextWord;
 };
   
 readTextFile("words.txt");
@@ -105,14 +97,14 @@ document.onkeydown = function textPrediction(e){
             }
             if(word !== mOutput.value){
                 mInput.value = mInput.value.split(' ').slice(0,-1).join(' ') + ' ' + mOutput.value;
+                mOutput.value = printNextWord(word.join(''));
                 word = [];
-                mOutput.value = '';
                 if(e.key === 'Tab'){
                     mInput.value = mInput.value + ' ';
                 }
             }else if(word === mOutput.value){
-                word = [];
-                mOutput.value = '';
+              mOutput.value = printNextWord(word.join(''));
+              word = [];
             }
         }else{
         temp = arr;
